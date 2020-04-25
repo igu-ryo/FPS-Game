@@ -7,8 +7,10 @@ public class Player : MonoBehaviour {
     //プレイヤーの移動速度
     public float moveSpeed;
 
-	// Use this for initialization
-	void Start () {
+    public Vector3 moveForward;
+
+    // Use this for initialization
+    void Start () {
         this.rb = GetComponent<Rigidbody>();
 	}
 	
@@ -23,7 +25,7 @@ public class Player : MonoBehaviour {
         //カメラの向きのy成分を除いた単位ベクトル
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1));
         //カメラの向きと方向キーから移動方向の単位ベクトルを決める
-        Vector3 moveForward = (cameraForward * vertical + Camera.main.transform.right * horizontal).normalized;
+        moveForward = (cameraForward * vertical + Camera.main.transform.right * horizontal).normalized;
         //移動方向にスピードを掛け、y方向の速度は触らない
         rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
         //プレイヤーの向きを進行方向に
