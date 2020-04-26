@@ -6,6 +6,7 @@ public class MainCamera : MonoBehaviour {
     GameObject targetObj;
     Vector3 targetPos;
     public float cameraSpeed;
+    int cameraMoveAreaX = Screen.width / 13;
 
 	// Use this for initialization
 	void Start () {
@@ -27,14 +28,12 @@ public class MainCamera : MonoBehaviour {
         targetPos = targetObj.transform.position;
 
         float horizontal = 0;
-        float vertical = 0;
-        if (Input.GetKey(KeyCode.L)) horizontal = 1;
-        if (Input.GetKey(KeyCode.J)) horizontal = -1;
-        if (Input.GetKey(KeyCode.I)) vertical = 1;
-        if (Input.GetKey(KeyCode.K)) vertical = -1;
+        //float vertical = 0;
+        if (Screen.width - cameraMoveAreaX < Input.mousePosition.x) horizontal = 1;
+        if (Input.mousePosition.x < cameraMoveAreaX) horizontal = -1;
         // targetの位置のY軸を中心に、回転（公転）する
         transform.RotateAround(targetPos, Vector3.up, horizontal * cameraSpeed);
         // カメラの垂直移動
-        transform.RotateAround(targetPos, transform.right, vertical * cameraSpeed);
+        //transform.RotateAround(targetPos, transform.right, vertical * cameraSpeed);
     }
 }

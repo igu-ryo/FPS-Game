@@ -13,12 +13,13 @@ public class BulletGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetMouseButtonDown(0))
         {
             GameObject bullet = Instantiate(bulletPrefab) as GameObject;
-            bullet.transform.position = transform.position;
+            bullet.transform.position = Camera.main.transform.position;
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-            bulletRb.velocity = Camera.main.transform.forward * moveSpeed + new Vector3(0, 10f, 0);
+            Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
+            bulletRb.velocity = (Camera.main.ScreenToWorldPoint(mousePos) - Camera.main.transform.position) * moveSpeed;
         }
 	}
 }
