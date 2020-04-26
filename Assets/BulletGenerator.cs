@@ -9,7 +9,6 @@ public class BulletGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -19,7 +18,7 @@ public class BulletGenerator : MonoBehaviour {
             GameObject bullet = Instantiate(bulletPrefab) as GameObject;
             bullet.transform.position = transform.position;
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-            bulletRb.velocity = GetComponent<Player>().moveForward * moveSpeed + new Vector3(0, bulletRb.velocity.y, 0);
+            bulletRb.velocity = Camera.main.transform.forward * moveSpeed + new Vector3(0, 10f, 0);
         }
 	}
 }

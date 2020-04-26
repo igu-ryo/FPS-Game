@@ -9,7 +9,7 @@ public class MainCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        targetObj = GameObject.Find("Player");
+        targetObj = GameObject.FindGameObjectWithTag("Player");
         targetPos = targetObj.transform.position;
 
         // プレイヤーと一定距離離れたところにカメラ位置を初期化

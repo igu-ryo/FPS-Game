@@ -7,7 +7,7 @@ public class SearchPlayer : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            enemy.GetComponent<MoveEnemy>().enemyState = "chase";
+            enemy.GetComponent<Enemy>().enemyState = "chase";
         }
     }
 
@@ -15,8 +15,8 @@ public class SearchPlayer : MonoBehaviour {
     {
         if (other.tag == "Player")
         {
-            enemy.GetComponent<MoveEnemy>().destPos = enemy.GetComponent<MoveEnemy>().GetDestinationPos();
-            enemy.GetComponent<MoveEnemy>().enemyState = "patrol";
+            enemy.GetComponent<Enemy>().destPos = enemy.GetComponent<Enemy>().GetDestinationPos();
+            enemy.GetComponent<Enemy>().enemyState = "patrol";
         }
     }
 
